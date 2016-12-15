@@ -1,12 +1,11 @@
 <?php
 /*
 *
-* Plugin Name: WP load more post
-* Plugin URI:  https://developer.wordpress.org/plugins/the-basics/
+* Plugin Name: Woocod load more post
 * Description: A wordpress load more posts with category filter. You can filter post via category and custom taxonomy with load more.
 * Version:     1.0
 * Author:      Sanjaya Dulal
-* Author URI:  https://developer.wordpress.org/
+* Author URI:  http://woocod.com
 * Text Domain: wp-load-more-post
 * Domain Path: /languages
 * License:     GPL2
