@@ -25,7 +25,7 @@
  * @since      1.1.5
  * @package    Load_more
  * @subpackage Load_more/includes
- * @author     Your Name <email@example.com>
+ * @author     Sanjaya Dulal <ninjawebcoder@gmail.com>
  */
 class Load_more
 {

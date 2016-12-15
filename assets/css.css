@@ -41,6 +41,8 @@
     float: left;
     width: 32%;
     padding: 12px;
+    min-height: 375px;
+    height: 375px;
 }
 
 .post-box-content .post-title {
@@ -51,6 +53,11 @@
     box-shadow: none;
 }
 
+.post-box-content .entry-date {
+    color: #686868;
+    font-size: 14px;
+}
+
 .image-col > img {
     width: 100%;
     height: 200px;
@@ -58,12 +65,13 @@
 
 
 /* responsive */
-@media (max-width : 1224px) {
+
+@media (max-width: 1224px) {
     .post-box-content {
         width: 32%;
     }
     .image-col > img {
-    height: 169px;
+        height: 169px;
     }
 }
 
@@ -72,7 +80,6 @@
         width: 47%;
     }
 }
-
 
 @media (max-width:768px) {
     .post-box-content {
