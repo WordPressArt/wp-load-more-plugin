@@ -27,7 +27,7 @@
  * @subpackage Load_more/includes
  * @author     Sanjaya Dulal <ninjawebcoder@gmail.com>
  */
-class Load_more
+class Wlmp_more
 {
 
     /**
@@ -72,12 +72,11 @@ class Load_more
 
         $this->plugin_name = 'wp-load-more';
         $this->version     = '1.0.1';
-
         $this->load_dependencies();
         $this->set_locale();
         $this->define_admin_hooks();
-        $this->register_shortcode();
-        $this->register_ajax();
+        $this->wlmp_register_shortcode();
+        $this->wlmp_register_ajax();
     }
 
     /**
@@ -139,10 +138,10 @@ class Load_more
 
     }
 
-    private function register_ajax()
+    private function wlmp_register_ajax()
     {
-        add_action('wp_ajax_ajax_getPosts', array($this, 'ajax_getPosts'));
-        add_action('wp_ajax_nopriv_ajax_getPosts', array($this, 'ajax_getPosts'));
+        add_action('wp_ajax_wlmp_ajax_getPosts', array($this, 'wlmp_ajax_getPosts'));
+        add_action('wp_ajax_nopriv_wlmp_ajax_getPosts', array($this, 'wlmp_ajax_getPosts'));
         add_action('wp_ajax_tweet', array($this, 'tweet'));
         add_action('wp_ajax_nopriv_tweet', array($this, 'tweet'));
     }
@@ -152,7 +151,7 @@ class Load_more
         echo "tweet tweet!!";
         die();
     }
-    public function ajax_getPosts()
+    public function wlmp_ajax_getPosts()
     {
 
         global $pdir, $wp_query;
@@ -215,16 +214,16 @@ class Load_more
 
     }
 
-    private function register_shortcode()
+    private function wlmp_register_shortcode()
     {
-        add_shortcode('loadmore_nav', array($this, 'loadmore_nav'));
-        add_shortcode('loadmore_template', array($this, 'loadmore_template'));
-        add_shortcode('loadmore_template_sec', array($this, 'loadmore_template_sec'));
-        add_shortcode('loadmore_button', array($this, 'loadmore_button'));
+        add_shortcode('wlmp_loadmore_nav', array($this, 'wlmp_loadmore_nav'));
+        add_shortcode('wlmp_loadmore_template', array($this, 'wlmp_loadmore_template'));
+        add_shortcode('wlmp_loadmore_template_sec', array($this, 'wlmp_loadmore_template_sec'));
+        add_shortcode('wlmp_loadmore_button', array($this, 'wlmp_loadmore_button'));
 
     }
     //Post loadmore shortcodes
-    public function loadmore_nav($atts)
+    public function wlmp_loadmore_nav($atts)
     {
         $attr = shortcode_atts(array(
             'align'    => 'center',
@@ -251,7 +250,7 @@ class Load_more
     }
 
     //body template part
-    public function loadmore_template($atts)
+    public function wlmp_loadmore_template($atts)
     {
         $a = shortcode_atts(array(
             'template'  => 'blog',
@@ -287,7 +286,7 @@ class Load_more
 					    var page_count = function(){
 					    	$.ajax({
 				                method     : "GET",
-				                data       : { action : "ajax_getPosts", postType: "<?php echo $a['post_type'] ?>",  task: "page_count", numPosts : 10, pageNumber: attrs.page, term: attrs.term},
+				                data       : { action : "wlmp_ajax_getPosts", postType: "<?php echo $a['post_type'] ?>",  task: "page_count", numPosts : 1, pageNumber: attrs.page, term: attrs.term},
 				                url        : ajaxurl,
 
 				                success    : function(data){
@@ -302,7 +301,7 @@ class Load_more
 					    var load_posts = function(){
 				            $.ajax({
 				                method     : "GET",
-				                data       : { action : "ajax_getPosts", postType: "<?php echo $a['post_type'] ?>", numPosts : 10, pageNumber: attrs.page, term: attrs.term},
+				                data       : { action : "wlmp_ajax_getPosts", postType: "<?php echo $a['post_type'] ?>", numPosts : 1, pageNumber: attrs.page, term: attrs.term},
 				                dataType   : "html",
 				                url        : ajaxurl,
 				                beforeSend : function(){
@@ -396,7 +395,7 @@ $script = ob_get_contents();
     }
 
     //button template
-    public function loadmore_button($atts)
+    public function wlmp_loadmore_button($atts)
     {
         $attr = shortcode_atts(array(
             'text'  => 'Load more',
@@ -409,7 +408,7 @@ $script = ob_get_contents();
 
     public function load_more_short($attr)
     {
-        //var_dump($attr);
+        // var_dump($attr);
         ob_start();
         dynamic_sidebar($attr['id']);
         $output = ob_get_contents();

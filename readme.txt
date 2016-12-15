@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: sanjayabhai
-Tags: loadmore, ajax loadmore, post loadmore
+Tags: loadmore, ajax loadmore, post loadmore, category filter with load more, wordpress loadmore
 Requires at least: 4.6
 Tested up to: 4.7
 Stable tag: 4.3
@@ -12,26 +12,24 @@ Here is a short description of the plugin.  This should be no more than 150 char
 == Description ==
 
 How to use?
-It have it's own shotcode. You can use the shortcode in any page, content, post, anyway whereever you want. 
+It have it's own shotcode. You can use the shortcode in any page, content, post, whereever you want. 
 
 For page, post: 
-[loadmore_nav taxonomy="category"]
+[wlmp_loadmore_nav taxonomy="category"]
 * Loads category list . use taxonomy = "taxonomy used in post type" by default it's "category"
 
-[loadmore_template post_type="piper"]
+[wlmp_loadmore_template post_type="piper"]
 * Loads template container and ajax scripts
 
-[loadmore_button]
+[wlmp_loadmore_button]
 * show load more button is post page is more that one.
 
 And for PHP template : 
-<?php echo  do_shortcode('[loadmore_nav taxonomy="category"]'); ?>
-<?php echo  do_shortcode('[loadmore_template post_type="piper"]'); ?>
-<?php echo  do_shortcode('[loadmore_button]'); ?>
+<?php echo  do_shortcode('[wlmp_loadmore_nav taxonomy="category"]'); ?>
+<?php echo  do_shortcode('[wlmp_loadmore_template post_type="piper"]'); ?>
+<?php echo  do_shortcode('[wlmp_loadmore_button]'); ?>
 
 Load more will show when you post is more than 10. 
-
-Pro version coming soon. 
 
 == Installation ==
 
@@ -44,12 +42,26 @@ e.g.
 3. Follow the steps from description tab
 
 
-
 == Frequently Asked Questions ==
 
 = Can i use it for custom post type ? =
 
-Yes you can use it for custom post type too. Just replace the "piper" from shortcode [loadmore_template post_type="piper"] with your custom post type.
+Yes you can use it for custom post type too. Just replace the "piper" from shortcode [wplmp_loadmore_template post_type="piper"] with your custom post type.
 
-== Screenshots ==
-/assets/screen1.png
+= Can i use custom taxonomy filter =
+
+Yes you can use it for custom category filter. Just replace the "category" to custom taxonomy slug [wlmp_loadmore_nav taxonomy="category"].
+
+= About load more button = 
+
+If the post is more then 10 then it will automatically show load more button.
+
+= Want load more button, category nav to hide =
+
+Just remove shortcode from editor or php file where you past or do_shortcode. It will remove.
+
+
+== Changelog ==
+
+= 1.0 =
+This is the first version of plugin.

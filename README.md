@@ -1,6 +1,3 @@
-# wp-load-more
-A wordpress load more plugin
-
 ##Instruction
 1. Download the wp-load-more plugin
 2. unzip it in wp-plugins directory 
@@ -9,11 +6,11 @@ A wordpress load more plugin
 ##How to use?
 ###Shortcodes
 
-####[loadmore_nav taxonomy="category"]
+####[wlmp_loadmore_nav taxonomy="category"]
 * Loads category list . use taxonomy = "taxonomy used in post type" by default it's "category"
 
-####[loadmore_template post_type="piper"]
+####[wlmp_loadmore_template post_type="piper"]
 * Loads template container and ajax scripts
 
-####[loadmore_button]
+####[wlmp_loadmore_button]
 * show load more button is post page is more that one.

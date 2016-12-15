@@ -1,23 +1,35 @@
 <?php
 /*
- * @wordpress-plugin
- * Plugin URI: Plugins Web Page URL
- * Plugin Name:       WP Load More
- * Description:       A wordpress load more posts plugin lite version
- * Version:           1.0
- * Author:            Sanjaya Dulal
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       wp-load-more
- */
+*
+* Plugin Name: WP load more post
+* Plugin URI:  https://developer.wordpress.org/plugins/the-basics/
+* Description: A wordpress load more posts with category filter. You can filter post via category and custom taxonomy with load more.
+* Version:     1.0
+* Author:      Sanjaya Dulal
+* Author URI:  https://developer.wordpress.org/
+* Text Domain: wp-load-more-post
+* Domain Path: /languages
+* License:     GPL2
+* License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+*  
+* WP load more post is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* any later version.
+*  
+* WP load more post is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*  
+* You should have received a copy of the GNU General Public License
+* along with WP load more post. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
+*/
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
 }
-$plugin_url = plugins_url('', __FILE__);
-
-$purl = plugin_dir_url(__FILE__);
 $pdir = plugin_dir_path(__FILE__);
 
 /**
@@ -30,9 +42,9 @@ require_once plugin_dir_path(__FILE__) . 'includes/class-wp-load-more-activator.
  */
 require_once plugin_dir_path(__FILE__) . 'includes/class-wp-load-more-deactivator.php';
 
-register_activation_hook(__FILE__, array('Load_More_Activator', 'activate'));
+register_activation_hook(__FILE__, array('Wlmp_More_Activator', 'activate'));
 
-register_deactivation_hook(__FILE__, array('Load_More_Deactivator', 'deactivate'));
+register_deactivation_hook(__FILE__, array('Wlmp_More_Deactivator', 'deactivate'));
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -49,20 +61,18 @@ require_once plugin_dir_path(__FILE__) . 'includes/class-wp-load-more.php';
  *
  * @since    1.1.5
  */
-function run_wp_load_more()
+function wlmp_run_wp_load_more()
 {
-    $plugin = new Load_More();
+    $plugin = new Wlmp_more();
     $plugin->run();
 
 }
 
-run_wp_load_more();
+wlmp_run_wp_load_more();
 
 //add ajaxurl on frontend
-
-add_action('wp_head', 'pluginname_ajaxurl');
-function pluginname_ajaxurl()
-{
+add_action('wp_head', 'wlmp_ajaxurl');
+function wlmp_ajaxurl() {
     ?>
 <script type="text/javascript">
 var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
@@ -79,10 +89,9 @@ var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
  * @param string|bool $ver (optional) Script version (used for cache busting), set to null to disable
  * @param bool $in_footer (optional) Whether to enqueue the script before </head> or before </body>
  */
-function plugin_footer_script()
-{
+function wlmp_plugin_script(){
     wp_enqueue_script('jquery', false, array(), false, false);
     wp_enqueue_style('loadmore-css', plugins_url('/assets/css.css', __FILE__), '', '', '');
     wp_enqueue_style('loadmore-css');
 }
-add_filter('wp_footer', 'plugin_footer_script');
+add_filter('wp_footer', 'wlmp_plugin_script');

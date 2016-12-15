@@ -1,6 +1,6 @@
 <?php
 
-class Load_More_Activator {
+class Wlmp_More_Activator {
 
 	/**
 	 * Short Description. (use period)
